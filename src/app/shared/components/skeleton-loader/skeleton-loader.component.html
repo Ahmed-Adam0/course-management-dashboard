@@ -1,0 +1,48 @@
+@if (isMobile) {
+  <div class="skeleton-cards-grid">
+    @for (i of [1, 2, 3]; track i) {
+      <div class="skeleton-card">
+        <div class="skeleton-header">
+          <div class="skeleton-line skeleton-title-line"></div>
+          <div class="skeleton-line skeleton-subtitle-line"></div>
+          <div class="skeleton-chip"></div>
+        </div>
+        <div class="skeleton-content">
+          <div class="skeleton-meta-row">
+            <div class="skeleton-meta-item"></div>
+            <div class="skeleton-meta-item"></div>
+          </div>
+          <div class="skeleton-price-row"></div>
+        </div>
+        <div class="skeleton-actions">
+          <div class="skeleton-btn"></div>
+          <div class="skeleton-btn"></div>
+          <div class="skeleton-btn"></div>
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <div class="skeleton-table-container mat-elevation-z1">
+    <div class="skeleton-table-header">
+      <div class="skeleton-header-cell"></div>
+      <div class="skeleton-header-cell"></div>
+      <div class="skeleton-header-cell"></div>
+      <div class="skeleton-header-cell"></div>
+      <div class="skeleton-header-cell"></div>
+      <div class="skeleton-header-cell"></div>
+      <div class="skeleton-header-cell"></div>
+    </div>
+    @for (row of [1, 2, 3, 4, 5]; track row) {
+      <div class="skeleton-table-row">
+        <div class="skeleton-cell"></div>
+        <div class="skeleton-cell"></div>
+        <div class="skeleton-cell"></div>
+        <div class="skeleton-cell"></div>
+        <div class="skeleton-cell"></div>
+        <div class="skeleton-cell"></div>
+        <div class="skeleton-cell"></div>
+      </div>
+    }
+  </div>
+}

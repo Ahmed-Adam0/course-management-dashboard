@@ -1,0 +1,21 @@
+<form [formGroup]="filterForm" class="filter-form">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>{{ translate.get('filter_search_label') }}</mat-label>
+    <input matInput formControlName="name" [placeholder]="translate.get('filter_search_placeholder')" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="status-field">
+    <mat-label>{{ translate.get('filter_status_label') }}</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="">{{ translate.get('filter_all_statuses') }}</mat-option>
+      @for (status of statusOptions; track status) {
+        <mat-option [value]="status">{{ translate.translateStatus(status) }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-stroked-button type="button" class="reset-button" (click)="resetFilters()">
+    <mat-icon>clear_all</mat-icon> {{ translate.get('btn_reset') }}
+  </button>
+</form>

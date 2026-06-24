@@ -1,0 +1,114 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "courseName": "Angular Fundamentals",
+      "instructorName": "Ahmed Ali",
+      "category": "Frontend",
+      "duration": 20,
+      "price": 1500,
+      "status": "Active",
+      "createdDate": "2026-06-01",
+      "description": "Learn the absolute basics of Angular, including components, data binding, directives, and building standalone web applications from scratch."
+    },
+    {
+      "id": "2",
+      "courseName": "NestJS Advanced Patterns",
+      "instructorName": "Moustafa Sayed",
+      "category": "Backend",
+      "duration": 35,
+      "price": 2400,
+      "status": "Active",
+      "createdDate": "2026-05-15",
+      "description": "Master advanced architectural patterns in NestJS, including Microservices, CQRS, custom decorators, and database integrations."
+    },
+    {
+      "id": "3",
+      "courseName": "UI/UX Design Essentials",
+      "instructorName": "Sara Mahmoud",
+      "category": "Design",
+      "duration": 15,
+      "price": 999,
+      "status": "Draft",
+      "createdDate": "2026-06-10",
+      "description": "An introductory guide to design thinking, low-fidelity wireframing, high-fidelity prototypes, and user testing with Figma."
+    },
+    {
+      "id": "4",
+      "courseName": "Docker & Kubernetes for DevOps",
+      "instructorName": "Karim Hassan",
+      "category": "DevOps",
+      "duration": 40,
+      "price": 3200,
+      "status": "Active",
+      "createdDate": "2026-04-20",
+      "description": "Containerize your applications with Docker and orchestrate them at scale with Kubernetes clusters. Covers CI/CD integrations."
+    },
+    {
+      "id": "5",
+      "courseName": "React Native Mobile App Development",
+      "instructorName": "Amr Khaled",
+      "category": "Mobile",
+      "duration": 30,
+      "price": 1800,
+      "status": "Archived",
+      "createdDate": "2025-11-05",
+      "description": "Build high-performance cross-platform iOS and Android applications using React Native and Expo."
+    },
+    {
+      "id": "6",
+      "courseName": "Introduction to Python Data Science",
+      "instructorName": "Nour Eldin",
+      "category": "Data Science",
+      "duration": 25,
+      "price": 1250,
+      "status": "Draft",
+      "createdDate": "2026-06-20",
+      "description": "Start your journey in data science. Learn NumPy, Pandas, Matplotlib, and basic predictive models with Scikit-Learn."
+    },
+    {
+      "id": "7",
+      "courseName": "TypeScript Deep Dive",
+      "instructorName": "Tarek Kamal",
+      "category": "Frontend",
+      "duration": 12,
+      "price": 750,
+      "status": "Active",
+      "createdDate": "2026-06-05",
+      "description": "Unlock the full power of TypeScript. Master generics, advanced types, utility types, and strict compilation checks."
+    },
+    {
+      "id": "8",
+      "courseName": "Go Programming Language (Golang)",
+      "instructorName": "Sherif Amr",
+      "category": "Backend",
+      "duration": 18,
+      "price": 1100,
+      "status": "Active",
+      "createdDate": "2026-05-30",
+      "description": "Fast-paced introduction to Go. Learn concurrency with goroutines, interfaces, packages, and building RESTful APIs."
+    },
+    {
+      "id": "9",
+      "courseName": "TailwindCSS Premium Workflows",
+      "instructorName": "Hassan Ezzat",
+      "category": "Design",
+      "duration": 8,
+      "price": 450,
+      "status": "Active",
+      "createdDate": "2026-06-12",
+      "description": "Learn utility-first CSS techniques to build highly responsive, customized layouts without writing complex vanilla CSS stylesheet rules."
+    },
+    {
+      "id": "10",
+      "courseName": "GitHub Actions CI/CD Pipelines",
+      "instructorName": "Dina Mansour",
+      "category": "DevOps",
+      "duration": 10,
+      "price": 600,
+      "status": "Archived",
+      "createdDate": "2025-09-15",
+      "description": "Automate your building, testing, and deployment workflows using GitHub Actions. Build custom actions and secrets orchestration."
+    }
+  ]
+}

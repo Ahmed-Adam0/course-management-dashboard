@@ -1,0 +1,11 @@
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon color="warn">warning</mat-icon> {{ translate.get('dialog_title') }}
+</h2>
+<mat-dialog-content class="dialog-content">
+  <p>{{ translate.get('dialog_message') }} <strong>"{{ translate.translateCourseName(data.courseName) }}"</strong>?</p>
+  <p class="warning-subtext">{{ translate.get('dialog_subtext') }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button (click)="onCancel()">{{ translate.get('btn_cancel') }}</button>
+  <button mat-flat-button color="warn" (click)="onConfirm()">{{ translate.get('btn_delete') }}</button>
+</mat-dialog-actions>

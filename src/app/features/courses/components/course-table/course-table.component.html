@@ -1,0 +1,72 @@
+<div class="table-container mat-elevation-z1">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Course Name Column -->
+    <ng-container matColumnDef="courseName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ translate.get('col_course_name') }}</th>
+      <td mat-cell *matCellDef="let course" class="font-medium">{{ translate.translateCourseName(course.courseName) }}</td>
+    </ng-container>
+
+    <!-- Instructor Column -->
+    <ng-container matColumnDef="instructorName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ translate.get('col_instructor') }}</th>
+      <td mat-cell *matCellDef="let course">{{ translate.translateInstructor(course.instructorName) }}</td>
+    </ng-container>
+
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ translate.get('col_category') }}</th>
+      <td mat-cell *matCellDef="let course">
+        <span class="category-badge">{{ translate.translateCategory(course.category) }}</span>
+      </td>
+    </ng-container>
+
+    <!-- Duration Column -->
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ translate.get('col_duration') }}</th>
+      <td mat-cell *matCellDef="let course">{{ course.duration }} {{ translate.get('unit_hours') }}</td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ translate.get('col_price') }}</th>
+      <td mat-cell *matCellDef="let course">{{ course.price | currency }}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ translate.get('col_status') }}</th>
+      <td mat-cell *matCellDef="let course">
+        <span class="status-chip" [class]="getStatusClass(course.status)">
+          {{ translate.translateStatus(course.status) }}
+        </span>
+      </td>
+    </ng-container>
+
+    <!-- Created Date Column -->
+    <ng-container matColumnDef="createdDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ translate.get('col_created_date') }}</th>
+      <td mat-cell *matCellDef="let course">{{ course.createdDate | date:'mediumDate' }}</td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="actions-header">{{ translate.get('col_actions') }}</th>
+      <td mat-cell *matCellDef="let course">
+        <div class="action-buttons">
+          <button mat-icon-button color="primary" [title]="translate.get('btn_view')" (click)="view.emit(course.id)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" [title]="translate.get('btn_edit')" (click)="edit.emit(course.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" [title]="translate.get('btn_delete')" (click)="delete.emit(course)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

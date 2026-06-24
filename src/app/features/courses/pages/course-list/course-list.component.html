@@ -1,0 +1,111 @@
+<div class="list-container">
+  <div class="header-row">
+    <div>
+      <h1 class="page-title">{{ translate.get('page_title') }}</h1>
+      <p class="page-subtitle">{{ translate.get('page_subtitle') }}</p>
+    </div>
+    <button mat-flat-button color="primary" routerLink="add" class="add-button">
+      <mat-icon>add</mat-icon> {{ translate.get('btn_add_course') }}
+    </button>
+  </div>
+
+  <!-- Filters Section -->
+  <app-course-filter (filterChanged)="onFilterChanged($event)"></app-course-filter>
+
+  <!-- Main Content Area -->
+  @if (loading()) {
+    <app-skeleton-loader [isMobile]="isMobile()"></app-skeleton-loader>
+  } @else if (error()) {
+    <app-error-state 
+      [title]="translate.get('state_error_title')" 
+      [message]="translate.get('state_error_msg')" 
+      (retry)="loadCourses()">
+    </app-error-state>
+  } @else if (courses().length === 0) {
+    <app-empty-state 
+      [title]="translate.get('state_empty_title')" 
+      [message]="translate.get('state_empty_msg')">
+    </app-empty-state>
+  } @else {
+    <!-- Display List -->
+    <div class="content-view">
+      @if (isMobile()) {
+        <!-- Mobile Cards View -->
+        <div class="cards-grid">
+          @for (course of pagedCourses(); track course.id) {
+            <div class="grid-item">
+              <app-course-card
+                [course]="course"
+                (view)="onViewDetails($event)"
+                (edit)="onEditCourse($event)"
+                (delete)="onDeleteCourse($event)">
+              </app-course-card>
+            </div>
+          }
+        </div>
+      } @else {
+        <!-- Desktop Table View -->
+        <app-course-table
+          [courses]="courses()"
+          [paginator]="paginator"
+          (view)="onViewDetails($event)"
+          (edit)="onEditCourse($event)"
+          (delete)="onDeleteCourse($event)">
+        </app-course-table>
+      }
+
+      <!-- Shared Client-Side Paginator (Hidden, used for synchronizing sorting & mobile card state) -->
+      <mat-paginator #paginator
+        [length]="courses().length"
+        [pageSize]="pageSize()"
+        [pageIndex]="pageIndex()"
+        [pageSizeOptions]="[5, 10, 20]"
+        (page)="onPageChange($event)"
+        class="paginator-hidden">
+      </mat-paginator>
+
+      <!-- Custom pagination controls -->
+      <div class="custom-pagination-container mat-elevation-z1">
+        <div class="page-size-selector">
+          <span class="page-size-label">{{ translate.get('items_per_page') }}:</span>
+          <mat-form-field appearance="outline" class="size-select-field">
+            <mat-select [value]="pageSize()" (selectionChange)="onPageSizeChange($event.value)">
+              <mat-option [value]="5">5</mat-option>
+              <mat-option [value]="10">10</mat-option>
+              <mat-option [value]="20">20</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="custom-pagination-buttons">
+          <!-- Previous page button (hidden if first page) -->
+          <button mat-icon-button 
+            [style.visibility]="pageIndex() === 0 ? 'hidden' : 'visible'" 
+            (click)="goToPage(pageIndex() - 1)" 
+            title="Previous Page">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+
+          <!-- Numbered buttons -->
+          @for (page of getPagesArray(); track page) {
+            <button mat-mini-fab 
+              [color]="pageIndex() === page ? 'primary' : ''"
+              class="page-num-btn"
+              [class.active-btn]="pageIndex() === page"
+              (click)="goToPage(page)">
+              {{ page + 1 }}
+            </button>
+          }
+
+          <!-- Next page button (hidden if last page) -->
+          <button mat-icon-button 
+            [style.visibility]="(pageIndex() === totalPages() - 1 || totalPages() === 0) ? 'hidden' : 'visible'" 
+            (click)="goToPage(pageIndex() + 1)" 
+            title="Next Page">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

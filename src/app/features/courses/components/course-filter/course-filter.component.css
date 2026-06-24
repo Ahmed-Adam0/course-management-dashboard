@@ -1,0 +1,36 @@
+.filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 24px;
+}
+.search-field {
+  flex: 2;
+  min-width: 250px;
+}
+.status-field {
+  flex: 1;
+  min-width: 150px;
+}
+.reset-button {
+  height: 56px;
+  margin-bottom: 20px; /* Aligns with form fields which have helper spacing */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+@media (max-width: 600px) {
+  .filter-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .reset-button {
+    margin-bottom: 0;
+    height: 48px;
+  }
+}

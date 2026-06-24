@@ -1,0 +1,107 @@
+<div class="form-container">
+  <div class="header-row">
+    <button mat-icon-button routerLink="/courses" [title]="translate.get('btn_back_dashboard')">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1 class="page-title">{{ isEditMode() ? translate.get('form_title_edit') : translate.get('form_title_add') }}</h1>
+  </div>
+
+  <mat-card class="form-card mat-elevation-z1">
+    <mat-card-content>
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="course-form">
+        <!-- Course Name -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>{{ translate.get('form_label_name') }}</mat-label>
+          <input matInput formControlName="courseName" [placeholder]="translate.get('form_placeholder_name')" />
+          @if (courseForm.controls.courseName.hasError('required')) {
+            <mat-error>{{ translate.get('err_name_required') }}</mat-error>
+          }
+          @if (courseForm.controls.courseName.hasError('minlength')) {
+            <mat-error>{{ translate.get('err_name_minlength') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Instructor Name -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>{{ translate.get('form_label_instructor') }}</mat-label>
+          <input matInput formControlName="instructorName" [placeholder]="translate.get('form_placeholder_instructor')" />
+          @if (courseForm.controls.instructorName.hasError('required')) {
+            <mat-error>{{ translate.get('err_instructor_required') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="row">
+          <!-- Category -->
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>{{ translate.get('form_label_category') }}</mat-label>
+            <mat-select formControlName="category">
+              @for (cat of categories; track cat) {
+                <mat-option [value]="cat">{{ translate.translateCategory(cat) }}</mat-option>
+              }
+            </mat-select>
+            @if (courseForm.controls.category.hasError('required')) {
+              <mat-error>{{ translate.get('err_category_required') }}</mat-error>
+            }
+          </mat-form-field>
+
+          <!-- Status -->
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>{{ translate.get('form_label_status') }}</mat-label>
+            <mat-select formControlName="status">
+              @for (status of statusOptions; track status) {
+                <mat-option [value]="status">{{ translate.translateStatus(status) }}</mat-option>
+              }
+            </mat-select>
+            @if (courseForm.controls.status.hasError('required')) {
+              <mat-error>{{ translate.get('err_status_required') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <!-- Duration -->
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>{{ translate.get('form_label_duration') }}</mat-label>
+            <input matInput type="number" formControlName="duration" [placeholder]="translate.get('form_placeholder_duration')" />
+            @if (courseForm.controls.duration.hasError('required')) {
+              <mat-error>{{ translate.get('err_duration_required') }}</mat-error>
+            }
+            @if (courseForm.controls.duration.hasError('min')) {
+              <mat-error>{{ translate.get('err_duration_min') }}</mat-error>
+            }
+          </mat-form-field>
+
+          <!-- Price -->
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>{{ translate.get('form_label_price') }}</mat-label>
+            <input matInput type="number" formControlName="price" [placeholder]="translate.get('form_placeholder_price')" />
+            @if (courseForm.controls.price.hasError('required')) {
+              <mat-error>{{ translate.get('err_price_required') }}</mat-error>
+            }
+            @if (courseForm.controls.price.hasError('min')) {
+              <mat-error>{{ translate.get('err_price_min') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <!-- Description -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>{{ translate.get('form_label_description') }}</mat-label>
+          <textarea matInput formControlName="description" rows="5" [placeholder]="translate.get('form_placeholder_description')"></textarea>
+          <mat-hint align="end">{{ courseForm.controls.description.value.length }}/500</mat-hint>
+          @if (courseForm.controls.description.hasError('maxlength')) {
+            <mat-error>{{ translate.get('err_desc_maxlength') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Actions -->
+        <div class="form-actions">
+          <button mat-button type="button" routerLink="/courses">{{ translate.get('btn_cancel') }}</button>
+          <button mat-flat-button color="primary" type="submit" [disabled]="courseForm.invalid">
+            <mat-icon>save</mat-icon> {{ isEditMode() ? translate.get('btn_update') : translate.get('btn_save') }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

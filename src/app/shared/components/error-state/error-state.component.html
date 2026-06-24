@@ -1,0 +1,8 @@
+<div class="error-state-container">
+  <mat-icon class="error-icon">error_outline</mat-icon>
+  <h3 class="error-title">{{ title }}</h3>
+  <p class="error-message">{{ message }}</p>
+  <button mat-flat-button color="warn" class="retry-button" (click)="onRetry()">
+    <mat-icon>refresh</mat-icon> {{ translate.get('btn_retry') }}
+  </button>
+</div>
