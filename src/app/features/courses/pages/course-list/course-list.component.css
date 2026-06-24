@@ -13,12 +13,12 @@
 .page-title {
   font-size: 1.8rem;
   font-weight: 500;
-  color: #333333;
+  color: var(--text-main);
   margin: 0 0 4px 0;
 }
 .page-subtitle {
   font-size: 0.9rem;
-  color: #666666;
+  color: var(--text-muted);
   margin: 0;
 }
 .add-button {
@@ -34,7 +34,7 @@
   justify-content: center;
   padding: 80px 0;
   gap: 16px;
-  color: #666666;
+  color: var(--text-muted);
 }
 .content-view {
   margin-top: 16px;
@@ -57,7 +57,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   padding: 12px 24px;
   border-radius: 8px;
   margin-top: 16px;
@@ -72,7 +73,7 @@
 
 .page-size-label {
   font-size: 0.85rem;
-  color: #666666;
+  color: var(--text-muted);
 }
 
 .size-select-field {
@@ -100,11 +101,11 @@
 
 .page-num-btn:not(.active-btn) {
   background-color: transparent !important;
-  color: #333333 !important;
+  color: var(--text-main) !important;
 }
 
 .page-num-btn:not(.active-btn):hover {
-  background-color: #f1f3f4 !important;
+  background-color: var(--bg-hover) !important;
 }
 @media (max-width: 600px) {
   .header-row {

@@ -141,8 +141,32 @@ export class CourseService {
    * Seed Local Storage with initial data if empty
    */
   private initLocalStorage(): void {
-    if (typeof window !== 'undefined' && !localStorage.getItem('courses')) {
-      localStorage.setItem('courses', JSON.stringify(this.SEED_COURSES));
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('courses');
+      if (!stored) {
+        localStorage.setItem('courses', JSON.stringify(this.SEED_COURSES));
+      } else {
+        try {
+          const list: Course[] = JSON.parse(stored);
+          const hasAngular = list.some(c => c.courseName === 'Angular Fundamentals');
+          if (!hasAngular) {
+            localStorage.setItem('courses', JSON.stringify(this.SEED_COURSES));
+          } else {
+            let modified = false;
+            list.forEach(c => {
+              if (c.instructorName === 'Ahmed Adam') {
+                c.instructorName = 'Ahmed Ali';
+                modified = true;
+              }
+            });
+            if (modified) {
+              localStorage.setItem('courses', JSON.stringify(list));
+            }
+          }
+        } catch (e) {
+          localStorage.setItem('courses', JSON.stringify(this.SEED_COURSES));
+        }
+      }
     }
   }
 

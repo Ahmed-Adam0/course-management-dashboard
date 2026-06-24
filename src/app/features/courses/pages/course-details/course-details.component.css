@@ -13,7 +13,7 @@
 .page-title {
   font-size: 1.8rem;
   font-weight: 500;
-  color: #333333;
+  color: var(--text-main);
   margin: 0;
 }
 .loading-container {
@@ -26,7 +26,7 @@
   color: #666666;
 }
 .details-card {
-  background: #ffffff;
+  background: var(--bg-card);
   border-radius: 8px;
   padding: 24px;
 }
@@ -34,20 +34,20 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  border-bottom: 1px solid #f1f3f4;
+  border-bottom: 1px solid var(--border-color);
   padding: 0 0 20px 0;
   margin-bottom: 24px;
 }
 .card-title {
   font-size: 1.5rem;
   font-weight: 500;
-  color: #202124;
+  color: var(--text-main);
   margin: 0 0 4px 0;
   line-height: 1.25;
 }
 .card-subtitle {
   font-size: 0.95rem;
-  color: #5f6368;
+  color: var(--text-muted);
 }
 .status-chip {
   padding: 6px 12px;
@@ -94,7 +94,7 @@
 }
 .info-label {
   font-size: 0.8rem;
-  color: #70757a;
+  color: var(--text-muted-light);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 2px;
@@ -102,10 +102,10 @@
 .info-value {
   font-size: 1.05rem;
   font-weight: 500;
-  color: #202124;
+  color: var(--text-main);
 }
 .description-section {
-  background-color: #f8f9fa;
+  background-color: var(--bg-app);
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 24px;
@@ -113,19 +113,19 @@
 .description-title {
   font-size: 1.05rem;
   font-weight: 500;
-  color: #202124;
+  color: var(--text-main);
   margin: 0 0 12px 0;
 }
 .description-text {
   font-size: 0.95rem;
-  color: #3c4043;
+  color: var(--text-muted);
   line-height: 1.6;
   margin: 0;
 }
 .card-actions {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #f1f3f4;
+  border-top: 1px solid var(--border-color);
   padding: 20px 0 0 0;
   margin-top: 16px;
 }
