@@ -1,6 +1,51 @@
-/* Global Application Styling Revamp */
+/* Global Application Styling Revamp with Light & Dark Theme Support */
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Color Variables Definitions */
+:root {
+  --bg-app: #f8fafc;             /* Cool slate light */
+  --bg-navbar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-hover: #f1f5f9;
+  --bg-badge: #f1f5f9;
+  --border-color: #e2e8f0;
+  
+  --text-main: #0f172a;          /* Slate 900 */
+  --text-muted: #475569;         /* Slate 600 */
+  --text-muted-light: #64748b;   /* Slate 500 */
+  
+  --color-primary: #4f46e5;      /* Indigo 600 */
+  --color-primary-hover: #4338ca;
+  --color-accent: #10b981;       /* Emerald 500 */
+  --color-accent-hover: #059669;
+  --color-danger: #ef4444;       /* Red 500 */
+  
+  --shadow-elevation: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+  --shadow-elevation-hover: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08);
+}
+
+.dark-theme {
+  --bg-app: #0f172a;             /* Slate 900 */
+  --bg-navbar: #1e293b;          /* Slate 800 */
+  --bg-card: #1e293b;            /* Slate 800 */
+  --bg-hover: #334155;           /* Slate 700 */
+  --bg-badge: #334155;
+  --border-color: #334155;       /* Slate 700 */
+  
+  --text-main: #f8fafc;          /* Slate 50 */
+  --text-muted: #cbd5e1;         /* Slate 300 */
+  --text-muted-light: #94a3b8;   /* Slate 400 */
+  
+  --color-primary: #818cf8;      /* Indigo 400 */
+  --color-primary-hover: #6366f1;
+  --color-accent: #34d399;       /* Emerald 400 */
+  --color-accent-hover: #10b981;
+  --color-danger: #f87171;       /* Red 400 */
+  
+  --shadow-elevation: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow-elevation-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
 
 html, body {
   height: 100%;
@@ -9,8 +54,9 @@ html, body {
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #f8fafc; /* Beautiful Cool Slate Light BG */
-  color: #0f172a; /* Slate 900 */
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* RTL Mode Layout Helper Tweaks */
@@ -20,8 +66,8 @@ html[dir="rtl"] body {
 
 /* Custom Design Overrides to Impress Reviewers */
 .mat-elevation-z1 {
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.06) !important;
-  border: 1px solid #f1f5f9;
+  box-shadow: var(--shadow-elevation) !important;
+  border: 1px solid var(--border-color);
 }
 
 /* Global Button Aesthetics */
@@ -32,64 +78,94 @@ button.mat-mdc-flat-button {
 }
 
 button.mat-mdc-flat-button.mat-primary {
-  background-color: #4f46e5 !important; /* Premium Tech-Indigo */
+  background-color: var(--color-primary) !important;
   color: #ffffff !important;
 }
 
 button.mat-mdc-flat-button.mat-primary:hover {
-  background-color: #4338ca !important;
+  background-color: var(--color-primary-hover) !important;
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25) !important;
+}
+
+button.mat-mdc-flat-button.mat-accent {
+  background-color: var(--color-accent) !important;
+  color: #ffffff !important;
+}
+
+button.mat-mdc-flat-button.mat-accent:hover {
+  background-color: var(--color-accent-hover) !important;
+}
+
+button.mat-mdc-flat-button.mat-warn {
+  background-color: var(--color-danger) !important;
+  color: #ffffff !important;
 }
 
 button.mat-mdc-outlined-button {
   border-radius: 8px !important;
-  border-color: #cbd5e1 !important;
-  color: #475569 !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-muted) !important;
   transition: all 0.2s ease !important;
 }
 
 button.mat-mdc-outlined-button:hover {
-  background-color: #f8fafc !important;
-  border-color: #94a3b8 !important;
+  background-color: var(--bg-hover) !important;
+  border-color: var(--text-muted-light) !important;
 }
 
 /* Material Form Fields Customization */
 .mat-mdc-form-field {
-  --mdc-outlined-text-field-container-shape: 8px !important; /* Smooth Rounded Form Fields */
-  --mdc-outlined-text-field-focus-outline-color: #4f46e5 !important;
-  --mdc-outlined-text-field-hover-outline-color: #94a3b8 !important;
-  --mdc-outlined-text-field-outline-color: #e2e8f0 !important;
+  --mdc-outlined-text-field-container-shape: 8px !important;
+  --mdc-outlined-text-field-focus-outline-color: var(--color-primary) !important;
+  --mdc-outlined-text-field-hover-outline-color: var(--text-muted-light) !important;
+  --mdc-outlined-text-field-outline-color: var(--border-color) !important;
+}
+
+.mat-mdc-form-field .mat-mdc-floating-label {
+  color: var(--text-muted-light) !important;
+}
+
+.mat-mdc-form-field-error {
+  color: var(--color-danger) !important;
 }
 
 /* Global Cards Elevation and Transitions */
 mat-card {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
   border-radius: 12px !important;
-  border: 1px solid #f1f5f9 !important;
-  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 1px solid var(--border-color) !important;
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease !important;
 }
 
 mat-card.course-card:hover,
 mat-card.details-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08) !important;
+  box-shadow: var(--shadow-elevation-hover) !important;
 }
 
 /* Material Table Enhancements */
 .mat-mdc-table {
-  background-color: #ffffff !important;
+  background-color: var(--bg-card) !important;
   border-radius: 8px;
 }
 
 .mat-mdc-header-row {
-  background-color: #f8fafc !important;
+  background-color: var(--bg-app) !important;
 }
 
 .mat-mdc-header-cell {
-  color: #475569 !important;
+  color: var(--text-muted) !important;
   font-weight: 600 !important;
   font-size: 0.85rem !important;
   letter-spacing: 0.2px;
   text-transform: uppercase;
+  border-bottom-color: var(--border-color) !important;
+}
+
+.mat-mdc-cell {
+  color: var(--text-muted) !important;
+  border-bottom-color: var(--border-color) !important;
 }
 
 .mat-mdc-row {
@@ -97,7 +173,183 @@ mat-card.details-card:hover {
 }
 
 .mat-mdc-row:hover {
-  background-color: #f8fafc !important;
+  background-color: var(--bg-hover) !important;
+}
+
+/* Option & Dropdown Select Overlays */
+.dark-theme .cdk-overlay-container .mat-mdc-select-panel,
+.dark-theme .cdk-overlay-container .mat-mdc-menu-panel {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-elevation-hover) !important;
+}
+
+.dark-theme .cdk-overlay-container .mat-mdc-option {
+  color: var(--text-main) !important;
+}
+
+.dark-theme .cdk-overlay-container .mat-mdc-option:hover:not(.mdc-list-item--disabled),
+.dark-theme .cdk-overlay-container .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) {
+  background-color: var(--bg-hover) !important;
+}
+
+/* Dialog Overlay in Dark Theme */
+.dark-theme .cdk-overlay-container .mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-elevation-hover) !important;
+}
+
+.dark-theme .cdk-overlay-container .dialog-content {
+  color: var(--text-muted) !important;
+}
+
+/* Text Inputs and textareas */
+.dark-theme input.mat-mdc-input-element,
+.dark-theme textarea.mat-mdc-input-element {
+  color: var(--text-main) !important;
+  caret-color: var(--color-primary) !important;
+}
+
+/* SnackBar Notifications in Dark Theme */
+.dark-theme .mdc-snackbar__surface {
+  background-color: var(--bg-hover) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color);
+}
+
+/* Custom badges and components classes overrides */
+.category-badge {
+  background-color: var(--bg-badge) !important;
+  color: var(--text-muted) !important;
+}
+
+.description-section {
+  background-color: var(--bg-app) !important;
+  border: 1px solid var(--border-color);
+}
+
+.description-text {
+  color: var(--text-muted) !important;
+}
+
+.filter-form {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-elevation) !important;
+}
+
+.custom-pagination-container {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color);
+}
+
+.page-num-btn:not(.active-btn) {
+  color: var(--text-main) !important;
+}
+
+.page-num-btn:not(.active-btn):hover {
+  background-color: var(--bg-hover) !important;
+}
+
+/* Status Chips Overrides for Dark Theme (Softer Contrasts) */
+.dark-theme .status-active {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  color: #34d399 !important;
+}
+
+.dark-theme .status-draft {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  color: #fbbf24 !important;
+}
+
+.dark-theme .status-archived {
+  background-color: rgba(148, 163, 184, 0.15) !important;
+  color: #94a3b8 !important;
+}
+
+/* Skeleton Loader Overrides */
+.dark-theme .skeleton-line,
+.dark-theme .skeleton-chip,
+.dark-theme .skeleton-meta-item,
+.dark-theme .skeleton-price-row,
+.dark-theme .skeleton-btn,
+.dark-theme .skeleton-header-cell,
+.dark-theme .skeleton-cell {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%) !important;
+  background-size: 200% 100% !important;
+}
+
+.dark-theme .skeleton-card,
+.dark-theme .skeleton-table-container {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+.dark-theme .skeleton-table-header {
+  background-color: var(--bg-app) !important;
+  border-color: var(--border-color) !important;
+}
+
+.dark-theme .skeleton-table-row {
+  border-color: var(--border-color) !important;
+}
+
+/* Page details subtitle and metadata */
+.card-subtitle {
+  color: var(--text-muted) !important;
+}
+
+.page-subtitle {
+  color: var(--text-muted) !important;
+}
+
+.page-title {
+  color: var(--text-main) !important;
+}
+
+.meta-item {
+  color: var(--text-muted) !important;
+}
+
+.meta-item mat-icon {
+  color: var(--text-muted-light) !important;
+}
+
+.price-row {
+  background-color: var(--bg-app) !important;
+}
+
+.price-label {
+  color: var(--text-muted) !important;
+}
+
+.price-value {
+  color: var(--color-primary) !important;
+}
+
+.date-row {
+  color: var(--text-muted-light) !important;
+}
+
+.empty-state-container {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+.empty-title {
+  color: var(--text-main) !important;
+}
+
+.empty-message {
+  color: var(--text-muted) !important;
+}
+
+/* Material Form Label Overrides for dark Mode */
+.dark-theme .mat-mdc-select-value-text,
+.dark-theme .mat-mdc-select-arrow {
+  color: var(--text-main) !important;
 }
 
 /* RTL Helper Adjustments */

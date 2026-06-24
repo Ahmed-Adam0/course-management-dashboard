@@ -5,9 +5,9 @@
   display: flex;
   align-items: center;
   padding: 0 24px;
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-  border-bottom: 1px solid #e2e8f0;
+  background-color: var(--bg-navbar) !important;
+  color: var(--text-main) !important;
+  border-bottom: 1px solid var(--border-color);
   height: 64px;
 }
 
@@ -18,7 +18,7 @@
   font-weight: 600;
   font-size: 1.2rem;
   letter-spacing: -0.2px;
-  color: #0f172a;
+  color: var(--text-main);
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
@@ -31,7 +31,7 @@
   font-size: 28px;
   width: 28px;
   height: 28px;
-  color: #4f46e5; /* Premium Tech-Indigo */
+  color: var(--color-primary);
 }
 
 .toolbar-spacer {
@@ -39,17 +39,28 @@
 }
 
 .lang-toggle-btn {
-  color: #4b5563 !important;
+  color: var(--text-muted) !important;
   font-weight: 500 !important;
   font-size: 0.9rem !important;
   margin-right: 12px !important;
   border-radius: 6px !important;
-  border: 1px solid #e5e7eb !important;
+  border: 1px solid var(--border-color) !important;
+  background-color: transparent !important;
 }
 
 .lang-toggle-btn:hover {
-  background-color: #f3f4f6 !important;
-  color: #0f172a !important;
+  background-color: var(--bg-hover) !important;
+  color: var(--text-main) !important;
+}
+
+.theme-toggle-btn {
+  color: var(--text-muted) !important;
+  margin-right: 12px !important;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--bg-hover) !important;
+  color: var(--text-main) !important;
 }
 
 .user-profile {
@@ -58,20 +69,20 @@
   gap: 8px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #1e293b;
+  color: var(--text-main);
   padding: 6px 12px;
-  background-color: #f1f5f9;
+  background-color: var(--bg-badge);
   border-radius: 8px;
 }
 
 .user-profile mat-icon {
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .app-content {
   min-height: calc(100vh - 64px);
   box-sizing: border-box;
-  background-color: #f8fafc; /* Beautiful Slate BG */
+  background-color: var(--bg-app);
   padding-bottom: 48px;
 }
 
@@ -90,6 +101,9 @@
     font-size: 0.8rem;
     padding: 4px 8px;
   }
+  .theme-toggle-btn {
+    margin-right: 4px !important;
+  }
 }
 
 .scroll-to-top-btn {
@@ -98,7 +112,7 @@
   right: 24px;
   z-index: 9999;
   box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2), 0 4px 6px -4px rgba(79, 70, 229, 0.2) !important;
-  background-color: #4f46e5 !important;
+  background-color: var(--color-primary) !important;
   color: #ffffff !important;
   animation: fadeIn 0.2s ease-in-out;
 }

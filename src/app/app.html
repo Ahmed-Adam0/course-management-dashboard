@@ -6,6 +6,9 @@
   <button mat-button class="lang-toggle-btn" (click)="translate.toggleLanguage()">
     <mat-icon>language</mat-icon> {{ translate.currentLang() === 'en' ? 'العربية' : 'English' }}
   </button>
+  <button mat-icon-button class="theme-toggle-btn" (click)="theme.toggleTheme()" [title]="theme.isDarkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+    <mat-icon>{{ theme.isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
   <span class="user-profile">
     <mat-icon>account_circle</mat-icon> {{ translate.get('admin_profile') }}
   </span>
