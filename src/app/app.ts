@@ -4,6 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslationService } from './core/services/translation.service';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { TranslationService } from './core/services/translation.service';
 export class App {
   protected readonly title = signal('course-management-dashboard');
   public translate = inject(TranslationService);
+  public theme = inject(ThemeService);
   showScrollButton = signal<boolean>(false);
 
   @HostListener('window:scroll', [])
