@@ -1,0 +1,85 @@
+<div class="details-container">
+  <div class="header-row">
+    <button mat-icon-button routerLink="/courses" title="Back to List">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1 class="page-title">{{ translate.get('details_page_title') }}</h1>
+  </div>
+
+  @if (loading()) {
+    <div class="loading-container">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>{{ translate.get('state_loading_details') }}</p>
+    </div>
+  } @else if (error() || !course()) {
+    <app-error-state
+      [title]="translate.get('state_not_found_title')"
+      [message]="translate.get('state_not_found_msg')"
+      (retry)="loadCourseDetails()">
+    </app-error-state>
+  } @else {
+    <mat-card class="details-card mat-elevation-z1">
+      <mat-card-header class="card-header">
+        <div class="title-section">
+          <mat-card-title class="card-title">{{ translate.translateCourseName(course()?.courseName || '') }}</mat-card-title>
+          <mat-card-subtitle class="card-subtitle">{{ translate.get('details_instructed_by') }} {{ translate.translateInstructor(course()?.instructorName || '') }}</mat-card-subtitle>
+        </div>
+        <span class="status-chip" [class]="getStatusClass(course()?.status)">
+          {{ translate.translateStatus(course()?.status || '') }}
+        </span>
+      </mat-card-header>
+
+      <mat-card-content class="card-content">
+        <div class="info-grid">
+          <div class="info-item">
+            <mat-icon class="info-icon">category</mat-icon>
+            <div class="info-text">
+              <span class="info-label">{{ translate.get('col_category') }}</span>
+              <span class="info-value">{{ translate.translateCategory(course()?.category || '') }}</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <mat-icon class="info-icon">schedule</mat-icon>
+            <div class="info-text">
+              <span class="info-label">{{ translate.get('col_duration') }}</span>
+              <span class="info-value">{{ course()?.duration }} {{ translate.get('unit_hours') }}</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <mat-icon class="info-icon">payments</mat-icon>
+            <div class="info-text">
+              <span class="info-label">{{ translate.get('col_price') }}</span>
+              <span class="info-value">{{ course()?.price | currency }}</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <mat-icon class="info-icon">calendar_today</mat-icon>
+            <div class="info-text">
+              <span class="info-label">{{ translate.get('col_created_date') }}</span>
+              <span class="info-value">{{ course()?.createdDate | date:'mediumDate' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="description-section">
+          <h3 class="description-title">{{ translate.get('details_description_title') }}</h3>
+          <p class="description-text">
+            {{ translate.translateDescription(course()?.description || '') || translate.get('details_no_description') }}
+          </p>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions class="card-actions">
+        <button mat-button routerLink="/courses">
+          <mat-icon>chevron_left</mat-icon> {{ translate.get('btn_back_dashboard') }}
+        </button>
+        <button mat-flat-button color="accent" [routerLink]="['/courses/edit', course()?.id]">
+          <mat-icon>edit</mat-icon> {{ translate.get('btn_edit') }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  }
+</div>
